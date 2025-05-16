@@ -1,4 +1,19 @@
 {
   "name": "openapi-tester",
-  "packageManager": "yarn@4.3.1"
+  "packageManager": "yarn@4.3.1",
+  "scripts": {
+    "openapi": "yarn openapi:generate && yarn openapi:client",
+    "openapi:generate": "yarn tsx src/index.ts",
+    "openapi:client": "yarn openapi-generator-cli generate"
+  },
+  "dependencies": {
+    "zod": "^3.24.2",
+    "zod-openapi": "^4.2.4"
+  },
+  "devDependencies": {
+    "@openapitools/openapi-generator-cli": "^2.20.0",
+    "@types/node": "^20.17.30",
+    "tsx": "^4.19.3",
+    "typescript": "5.8.3"
+  }
 }
