@@ -5,22 +5,15 @@
     "version": "1.0.0"
   },
   "paths": {
-    "/": {
-      "put": {
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {}
-            }
-          }
-        },
+    "/nullSchema": {
+      "get": {
         "responses": {
           "200": {
             "description": "200 OK",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/schema"
+                  "$ref": "#/components/schemas/NullSchema"
                 }
               }
             }
@@ -31,7 +24,7 @@
   },
   "components": {
     "schemas": {
-      "schema": {
+      "NullSchema": {
         "type": "object",
         "properties": {
           "data": {

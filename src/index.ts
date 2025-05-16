@@ -3,8 +3,8 @@ import fs from 'node:fs'
 import { z } from 'zod';
 import { createDocument } from 'zod-openapi';
 
-const schema = z.object({ data: z.null() }).openapi({
-    ref: 'schema',
+const nullSchema = z.object({ data: z.null() }).openapi({
+    ref: 'NullSchema',
 });
 
 const doc = createDocument({
@@ -14,24 +14,17 @@ const doc = createDocument({
         version: '1.0.0',
     },
     paths: {
-        '/': {
-            put: {
-                requestBody: {
-                    content: {
-                        'application/json': {
-                            schema: {},
-                        },
-                    },
-                },
+        '/nullSchema': {
+            get: {
                 responses: {
                     '200': {
                         description: '200 OK',
                         content: {
-                            'application/json': { schema },
+                            'application/json': { schema: nullSchema },
                         },
                     },
                 },
-            },
+            }
         },
     },
 });

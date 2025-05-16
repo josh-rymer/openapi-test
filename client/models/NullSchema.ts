@@ -16,30 +16,30 @@ import { mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface Schema
+ * @interface NullSchema
  */
-export interface Schema {
+export interface NullSchema {
     /**
      * 
      * @type {any}
-     * @memberof Schema
+     * @memberof NullSchema
      */
     data: any | null;
 }
 
 /**
- * Check if a given object implements the Schema interface.
+ * Check if a given object implements the NullSchema interface.
  */
-export function instanceOfSchema(value: object): value is Schema {
+export function instanceOfNullSchema(value: object): value is NullSchema {
     if (!('data' in value) || value['data'] === undefined) return false;
     return true;
 }
 
-export function SchemaFromJSON(json: any): Schema {
-    return SchemaFromJSONTyped(json, false);
+export function NullSchemaFromJSON(json: any): NullSchema {
+    return NullSchemaFromJSONTyped(json, false);
 }
 
-export function SchemaFromJSONTyped(json: any, ignoreDiscriminator: boolean): Schema {
+export function NullSchemaFromJSONTyped(json: any, ignoreDiscriminator: boolean): NullSchema {
     if (json == null) {
         return json;
     }
@@ -49,11 +49,11 @@ export function SchemaFromJSONTyped(json: any, ignoreDiscriminator: boolean): Sc
     };
 }
 
-export function SchemaToJSON(json: any): Schema {
-    return SchemaToJSONTyped(json, false);
+export function NullSchemaToJSON(json: any): NullSchema {
+    return NullSchemaToJSONTyped(json, false);
 }
 
-export function SchemaToJSONTyped(value?: Schema | null, ignoreDiscriminator: boolean = false): any {
+export function NullSchemaToJSONTyped(value?: NullSchema | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

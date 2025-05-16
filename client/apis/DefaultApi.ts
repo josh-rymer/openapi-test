@@ -15,16 +15,12 @@
 
 import * as runtime from '../runtime';
 import type {
-  Schema,
+  NullSchema,
 } from '../models/index';
 import {
-    SchemaFromJSON,
-    SchemaToJSON,
+    NullSchemaFromJSON,
+    NullSchemaToJSON,
 } from '../models/index';
-
-export interface RootPutRequest {
-    body?: any | null;
-}
 
 /**
  * 
@@ -33,28 +29,25 @@ export class DefaultApi extends runtime.BaseAPI {
 
     /**
      */
-    async rootPutRaw(requestParameters: RootPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Schema>> {
+    async nullSchemaGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<NullSchema>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        headerParameters['Content-Type'] = 'application/json';
-
         const response = await this.request({
-            path: `/`,
-            method: 'PUT',
+            path: `/nullSchema`,
+            method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['body'] as any,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => SchemaFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => NullSchemaFromJSON(jsonValue));
     }
 
     /**
      */
-    async rootPut(requestParameters: RootPutRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Schema> {
-        const response = await this.rootPutRaw(requestParameters, initOverrides);
+    async nullSchemaGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<NullSchema> {
+        const response = await this.nullSchemaGetRaw(initOverrides);
         return await response.value();
     }
 

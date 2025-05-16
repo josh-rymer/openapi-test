@@ -1,6 +1,7 @@
+.openapi-generator-ignore
 apis/DefaultApi.ts
 apis/index.ts
 index.ts
-models/Schema.ts
+models/NullSchema.ts
 models/index.ts
 runtime.ts
